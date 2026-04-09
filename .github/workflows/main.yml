@@ -31,4 +31,4 @@ jobs:
         BDUSS: ${{ secrets.BDUSS }}
         STOKEN: ${{ secrets.STOKEN }}
       run: |
-        python main.py --log debug --refresh
+        python main.py --log debug -r True
