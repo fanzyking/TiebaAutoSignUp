@@ -30,5 +30,6 @@ jobs:
       env:
         BDUSS: ${{ secrets.BDUSS }}
         STOKEN: ${{ secrets.STOKEN }}
+        SendKey: ${{ secrets.SendKey }}
       run: |
         python main.py --log info
