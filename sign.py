@@ -82,10 +82,10 @@ def sign_in():
     
     if "SendKey" in os.environ:
         notice += "共计" + str(sign_sum) + "个贴吧：成功" + str(sign_sum - faliure_sum) + "个，失败" + str(faliure_sum) + "个。"
-        api = f'https://sc.ftqq.com/{os.environ["SendKey"]}.send'
-        title = u"贴吧签到信息"
+        api = f'https://sctapi.ftqq.com/{os.environ["SendKey"]}.send'
+        title = "贴吧签到，共计" + str(sign_sum) + "个：成功" + str(sign_sum - faliure_sum) + "个，失败" + str(faliure_sum) + "个"
         data = {
-        "text":title,
+        "title":title,
         "desp":notice
         }
         try:
