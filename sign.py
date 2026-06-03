@@ -19,6 +19,7 @@ notice = ""
 # 单个贴吧签到
 # tieba_name:贴吧名
 def tieba_sign_in(tieba_name, tbs, BDUSS):
+    global notice
     sign_str = f"kw={tieba_name}tbs={tbs}tiebaclient!!!"
     sign = hashlib.md5(sign_str.encode("utf-8")).hexdigest()
     payload = {
@@ -63,6 +64,7 @@ def tieba_sign_in(tieba_name, tbs, BDUSS):
 
 
 def sign_in():
+    global notice
     logger.info("开始签到\n")
     with open("tieba_dict.json", "r", encoding="utf-8") as f:
         tieba_dict = json.load(f)
