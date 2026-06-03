@@ -75,16 +75,13 @@ def sign_in():
         if tieba_sign_in(tieba_name, tbs, BDUSS) == False:
             faliure_sum += 1
         sign_sum += 1
-        logger.info("共计" + str(sign_sum) + "个吧")
+        logger.info("第" + str(sign_sum) + "个吧")
         logger.info("已签到成功" + str(sign_sum - faliure_sum) + "个吧\n")
         time.sleep(random.randint(1, 5))
 
-    logger.info("共计" + str(sign_sum) + "个贴吧")
-    logger.info("成功" + str(sign_sum - faliure_sum) + "个")
-    logger.info("失败" + str(faliure_sum) + "个")
+    logger.info("共计" + str(sign_sum) + "个贴吧：成功" + str(sign_sum - faliure_sum) + "个，失败" + str(faliure_sum) + "个。")
     
     if 'SendKey' in os.environ:
-        SendKey
         notice += "共计" + str(sign_sum) + "个贴吧：成功" + str(sign_sum - faliure_sum) + "个，失败" + str(faliure_sum) + "个。"
         api = f'https://sctapi.ftqq.com/{os.environ["SendKey"]}.send'
         title = "贴吧签到，共计" + str(sign_sum) + "个：成功" + str(sign_sum - faliure_sum) + "个，失败" + str(faliure_sum) + "个"
@@ -95,7 +92,7 @@ def sign_in():
         try:
             req = requests.post(api, data=data, timeout=60)
             if req.status_code == 200:
-                logger.info("Server酱通知发送成功")
+                logger.info("Server酱通知发送成功：" + title)
             else:
                 logger.info(f"通知失败，状态码：{req.status_code}")
                 logger.info(api)
