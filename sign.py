@@ -41,24 +41,24 @@ def tieba_sign_in(tieba_name, tbs, BDUSS):
         json_resp = resp.json()
         if "user_info" in json_resp:
             logger.debug("签到成功：" + tieba_name + "吧")
-            notice += "签到成功：" + tieba_name + "吧" + '\n'
+            notice += "签到成功：" + tieba_name + "吧" + '\n\n'
             return True
         elif json_resp["error_code"] == "160002":
             # 已签到
             logger.error(
                 "签到失败：" + tieba_name + "吧" + " 失败原因：" + json_resp["error_msg"]
             )
-            notice += "签到失败：" + tieba_name + "吧" + "，失败原因：" + json_resp["error_msg"] + '\n'
+            notice += "签到失败：" + tieba_name + "吧" + "，失败原因：" + json_resp["error_msg"] + '\n\n'
         else:
             logger.error("签到失败：" + tieba_name + "吧")
             logger.debug(str(json_resp))
             logger.error("失败原因：" + json_resp["error_msg"])
-            notice += "签到失败：" + tieba_name + "吧" + "，失败原因：" + json_resp["error_msg"] + '\n'
+            notice += "签到失败：" + tieba_name + "吧" + "，失败原因：" + json_resp["error_msg"] + '\n\n'
     except Exception as e:
         logger.error("签到失败：" + tieba_name + "吧")
         logger.error("报错：" + str(e))
         logger.debug("返回数据：" + resp.text)
-        notice += "签到失败：" + tieba_name + "吧" + "，报错了!!!" + '\n'
+        notice += "签到失败：" + tieba_name + "吧" + "，报错了!!!" + '\n\n'
         return False
     
     return False
